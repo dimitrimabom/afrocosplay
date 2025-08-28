@@ -5,27 +5,40 @@ import Image from "next/image";
 
 export default function Hero({ onShop }: { onShop: () => void }) {
   return (
-    <section
-      className="relative overflow-hidden bg-rose-light"
-    >
+    <section className="relative overflow-hidden bg-rose-light">
       <div className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 items-center">
         <div>
           <h1 className="text-4xl md:text-5xl font-black leading-tight text-brown">
-            Cosplay pour tout le monde - <span className="text-rose-dark" >Afro</span>, Geek &amp; Fier !
+            Cosplay pour tout le monde -{" "}
+            <span className="text-rose-dark">Afro</span>, Geek &amp; Fier !
           </h1>
           <p className="mt-4 text-lg opacity-90 text-black">
-            Des perruques, accessoires, costumes, figurines et goodies qui célèbrent la culture otaku.
+            Des perruques, accessoires, costumes, figurines et goodies qui
+            célèbrent la culture otaku.
           </p>
           <div className="mt-6 flex items-center gap-3">
             <PrimaryButton onClick={onShop}>Acheter maintenant</PrimaryButton>
-            <GhostButton onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })}>
-              Rejoindre l'aventure
+            <GhostButton
+              onClick={() =>
+                window.scrollTo({
+                  top: document.body.scrollHeight,
+                  behavior: "smooth",
+                })
+              }
+            >
+              Rejoindre l&apos;aventure
             </GhostButton>
           </div>
           <div className="mt-4 flex items-center gap-2">
-            <Badge bg={'bg-yellow'} text={'text-black'}>✨ Nouveautés</Badge>
-            <Badge bg={'bg-rose-dark'} text={'text-white'}>🔥 Meilleures ventes</Badge>
-            <Badge bg={'bg-brown'} text={'text-white'}>✅ Inclusif</Badge>
+            <Badge bg={"bg-yellow"} text={"text-black"}>
+              ✨ Nouveautés
+            </Badge>
+            <Badge bg={"bg-rose-dark"} text={"text-white"}>
+              🔥 Meilleures ventes
+            </Badge>
+            <Badge bg={"bg-brown"} text={"text-white"}>
+              ✅ Inclusif
+            </Badge>
           </div>
         </div>
         <div className="relative">
@@ -42,10 +55,10 @@ export default function Hero({ onShop }: { onShop: () => void }) {
           </div>
           <div className="absolute -bottom-4 -left-4 rotate-[-6deg] px-3 py-2 rounded-2xl text-sm font-bold shadow bg-yellow text-black">
             #AfroGeek 💛
-            </div>
+          </div>
           <div className="absolute -top-4 -right-4 rotate-[6deg] px-3 py-2 rounded-2xl text-sm font-bold shadow bg-rose-dark text-white">
             #Kawaii 💖
-            </div>
+          </div>
         </div>
       </div>
     </section>

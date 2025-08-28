@@ -40,7 +40,8 @@ export interface ButtonProps {
   onClick?: () => void;
   disabled?: boolean;
   className?: string;
-  [key: string]: any;
+  type?: "button" | "submit" | "reset";
+  [key: string]: React.ReactNode | (() => void) | boolean | string | undefined;
 }
 
 export interface BadgeProps {
