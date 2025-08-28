@@ -1,4 +1,6 @@
-export default function Pill({ active, children, onClick }: { active?: boolean; children: React.ReactNode; onClick?: () => void }) {
+import { PillProps } from "../lib/types";
+
+export default function Pill({ active, children, onClick }: PillProps) {
   return (
     <button
       onClick={onClick}

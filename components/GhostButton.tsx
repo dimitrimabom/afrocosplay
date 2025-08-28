@@ -1,4 +1,6 @@
-export default function GhostButton({ children, ...props }: any) {
+import { ButtonProps } from "../lib/types";
+
+export default function GhostButton({ children, ...props }: ButtonProps) {
   return (
     <button
       {...props}

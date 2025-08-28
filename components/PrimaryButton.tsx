@@ -1,4 +1,6 @@
-export default function PrimaryButton({ children, ...props }: any) {
+import { ButtonProps } from "../lib/types";
+
+export default function PrimaryButton({ children, ...props }: ButtonProps) {
   return (
     <button
       {...props}

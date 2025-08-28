@@ -1,7 +1,9 @@
 import PrimaryButton from "./PrimaryButton";
 import Badge from "./Badge";
+import { ProductCardProps } from "../lib/types";
+import Image from "next/image";
 
-export default function ProductCard({ product, onAdd }: { product: any; onAdd: (product: any) => void }) {
+export default function ProductCard({ product, onAdd }: ProductCardProps) {
 
 const formatPriceCFA = (price: number): string => {
   return new Intl.NumberFormat("fr-FR", {
@@ -17,7 +19,7 @@ const formatPriceCFA = (price: number): string => {
       className="rounded-3xl overflow-hidden border shadow-sm flex flex-col border-rose-100"
     >
       <div className="relative">
-        <img src={product.img} alt={product.name} className="w-full h-52 object-cover" />
+        <Image src={product.img} alt={product.name} width={400} height={208} className="w-full h-52 object-cover" />
         <div className="absolute top-2 left-2 flex gap-2">
           {product.isNew && <Badge bg="bg-yellow" text="text-black">Nouveau</Badge>}
           {product.isBest && <Badge bg="bg-rose-dark" text="text-white">Best</Badge>}

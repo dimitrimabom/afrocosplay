@@ -3,6 +3,7 @@ import React, { useMemo } from "react";
 import Pill from "./Pill";
 import ProductCard from "./ProductCard";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
+import { ShopProps, Product } from "../lib/types";
 
 const TESTIMONIALS = [
   {
@@ -19,14 +20,14 @@ const TESTIMONIALS = [
   },
 ];
 
-export default function Shop({ products, onAdd, onFilter, filter, search, setSearch }: any) {
+export default function Shop({ products, onAdd, onFilter, filter, q, setQ }: ShopProps) {
   const categories = ["tout", "perruques", "accessoires", "costumes", "figurines", "goodies"];
   const filtered = useMemo(() => {
-    return products.filter((p: any) =>
+    return products.filter((p: Product) =>
       (filter === "tout" || p.category === filter) &&
-      (!search || p.name.toLowerCase().includes(search.toLowerCase()))
+      (!q || p.name.toLowerCase().includes(q.toLowerCase()))
     );
-  }, [products, filter, search]);
+  }, [products, filter, q]);
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-10">
@@ -43,15 +44,15 @@ export default function Shop({ products, onAdd, onFilter, filter, search, setSea
 
       <div className="mt-4">
         <input
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
           placeholder="Rechercher un produit…"
           className="w-full md:w-1/2 px-4 py-3 rounded-2xl border focus:outline-none border-rose-light"
         />
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-        {filtered.map((product: any) => (
+        {filtered.map((product: Product) => (
           <ProductCard key={product.id} product={product} onAdd={onAdd} />
         ))}
         {filtered.length === 0 && (
@@ -71,14 +72,14 @@ export default function Shop({ products, onAdd, onFilter, filter, search, setSea
             <h3 className="font-black text-xl text-brown">Nouveautés</h3>
             <p className="opacity-80">Découvre les dernières sorties de la boutique.</p>
             <CarouselContent className="mt-4 flex gap-3 pb-2">
-              {products.filter((product: any) => product.isNew).map((product: any) => (
+              {products.filter((product: Product) => product.isNew).map((product: Product) => (
           <CarouselItem key={product.id} className="basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
             <div className="w-full max-w-[300px] mx-auto">
               <ProductCard product={product} onAdd={onAdd} />
             </div>
           </CarouselItem>
               ))}
-              {products.filter((product: any) => product.isNew).length === 0 && (
+              {products.filter((product: Product) => product.isNew).length === 0 && (
           <div className="col-span-full text-center opacity-70 py-8 w-full">
             Aucun nouveau produit pour le moment.
           </div>
@@ -99,14 +100,14 @@ export default function Shop({ products, onAdd, onFilter, filter, search, setSea
             <h3 className="font-black text-xl text-black">Meilleures ventes</h3>
             <p className="opacity-80">Les coups de cœur de la communauté.</p>
             <CarouselContent className="mt-4 flex gap-3 pb-2">
-              {products.filter((product: any) => product.isBest).map((product: any) => (
+              {products.filter((product: Product) => product.isBest).map((product: Product) => (
           <CarouselItem key={product.id} className="basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
             <div className="w-full max-w-[300px] mx-auto">
               <ProductCard product={product} onAdd={onAdd} />
             </div>
           </CarouselItem>
               ))}
-              {products.filter((product: any) => product.isBest).length === 0 && (
+              {products.filter((product: Product) => product.isBest).length === 0 && (
           <div className="col-span-full text-center opacity-70 py-8 w-full">
             Aucun best-seller pour le moment.
           </div>

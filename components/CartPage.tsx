@@ -1,6 +1,8 @@
 import PrimaryButton from "./PrimaryButton";
+import { CartPageProps } from "../lib/types";
+import Image from "next/image";
 
-export default function CartPage({ cart, onQty, onRemove, onCheckout }: any) {
+export default function CartPage({ cart, onQty, onRemove, onCheckout }: CartPageProps) {
 
   const formatPriceCFA = (price: number): string => {
   return new Intl.NumberFormat("fr-FR", {
@@ -11,7 +13,7 @@ export default function CartPage({ cart, onQty, onRemove, onCheckout }: any) {
   }).format(price);
 };
 
-  const total = cart.reduce((s: number, c: any) => s + c.price * c.qty, 0);
+  const total = cart.reduce((s: number, c) => s + c.price * c.qty, 0);
   return (
     <section className="max-w-7xl mx-auto px-4 py-10">
       <h2 className="text-2xl font-black text-brown">Panier</h2>
@@ -20,9 +22,9 @@ export default function CartPage({ cart, onQty, onRemove, onCheckout }: any) {
       ) : (
         <div className="grid md:grid-cols-3 gap-6 mt-4">
           <div className="md:col-span-2 space-y-4">
-            {cart.map((item: any) => (
+            {cart.map((item) => (
               <div key={item.id} className="rounded-3xl p-4 border flex items-center gap-4 border-rose-light">
-                <img src={item.img} alt={item.name} className="w-20 h-20 object-cover rounded-2xl" />
+                <Image src={item.img} alt={item.name} width={80} height={80} className="w-20 h-20 object-cover rounded-2xl" />
                 <div className="flex-1">
                   <div className="font-bold text-brown">{item.name}</div>
                   <div className="text-sm opacity-80">{formatPriceCFA(item.price)}</div>

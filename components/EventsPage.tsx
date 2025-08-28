@@ -37,7 +37,7 @@ export default function EventsPage() {
             <div className="p-5">
               <p>{e.desc}</p>
               <div className="mt-4 flex gap-2">
-                <PrimaryButton onClick={() => alert("Inscription ouverte bientôt ✨")}>S'inscrire</PrimaryButton>
+                <PrimaryButton onClick={() => alert("Inscription ouverte bientôt ✨")}>S&apos;inscrire</PrimaryButton>
                 <GhostButton onClick={() => alert("Ajouté au calendrier !")}>Ajouter au calendrier</GhostButton>
               </div>
             </div>

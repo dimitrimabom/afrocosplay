@@ -11,7 +11,7 @@ export default function Hero({ onShop }: { onShop: () => void }) {
       <div className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 items-center">
         <div>
           <h1 className="text-4xl md:text-5xl font-black leading-tight text-brown">
-            Cosplay pour tout le monde - <span className="text-rose-dark" >Afro</span>, Geek & Fier !
+            Cosplay pour tout le monde - <span className="text-rose-dark" >Afro</span>, Geek &amp; Fier !
           </h1>
           <p className="mt-4 text-lg opacity-90 text-black">
             Des perruques, accessoires, costumes, figurines et goodies qui célèbrent la culture otaku.

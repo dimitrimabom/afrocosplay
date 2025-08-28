@@ -8,6 +8,7 @@ import AboutPage from "../components/AboutPage";
 import ContactPage from "../components/ContactPage";
 import CartPage from "../components/CartPage";
 import PrimaryButton from "../components/PrimaryButton";
+import { Product, CartItem } from "../lib/types";
 
 // // Palette
 // const PALETTE = {
@@ -20,7 +21,7 @@ import PrimaryButton from "../components/PrimaryButton";
 // };
 
 // Demo data (replace with real backend later)
-const PRODUCTS = [
+const PRODUCTS: Product[] = [
   {
     id: "wig-1",
     name: "Perruque Afro Pink Kawaii",
@@ -94,9 +95,9 @@ export default function AfrocosplayApp() {
   const [products, setProducts] = useState(PRODUCTS);
   const [filter, setFilter] = useState("tout");
   const [q, setQ] = useState("");
-  const [cart, setCart] = useState<any[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
-  function addToCart(p: any) {
+  function addToCart(p: Product) {
     // decrease stock
     setProducts((prev) => prev.map((x) => (x.id === p.id ? { ...x, stock: x.stock - 1 } : x)));
     setCart((prev) => {
@@ -106,11 +107,11 @@ export default function AfrocosplayApp() {
     });
   }
 
-  function updateQty(item: any, qty: number) {
+  function updateQty(item: CartItem, qty: number) {
     setCart((prev) => prev.map((i) => (i.id === item.id ? { ...i, qty } : i)));
   }
 
-  function removeItem(item: any) {
+  function removeItem(item: CartItem) {
     setCart((prev) => prev.filter((i) => i.id !== item.id));
   }
 
@@ -175,7 +176,7 @@ export default function AfrocosplayApp() {
             </div>
           </div>
         </div>
-        <div className="px-4 py-4 text-center text-xs opacity-70">className © {new Date().getFullYear()} Afrocosplay - Design by altplus</div>
+        <div className="px-4 py-4 text-center text-xs opacity-70">© {new Date().getFullYear()} Afrocosplay - Design by altplus</div>
       </footer>
     </div>
   );
